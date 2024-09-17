@@ -7,29 +7,28 @@ export class UserController {
     constructor(private userService:UserService){}
 
     @Get()
-    getUser():string{
+    get():string{
         return this.userService.getUser();
     }
 
     @Post()
-    storeUser(@Req() req:Request){
-        return this.userService.store();
+    store(@Req() req: Request){
+        return this.userService.store(req);
     }
 
     @Get('/:id')
-    showUser(@Param() params : {id:number}){
-        return params;
+    show(@Param() param : {id:number}){
+        return this.userService.show(param);
     }
 
     @Delete('/:id')
-    deleteUser(@Param() params: {id:number}){
-        return params
+    delete(@Param() param: {id:number}){
+        return this.userService.delete(param);
     }
 
     @Patch('/:id')
-    updateUser(@Param() params:{id:number},@Req() req:Request){
-        return req;
-        return params;
+    update(@Req() req: Request, @Param() param:{id:number}){
+        return this.userService.update(req, param);
     }
 
 }

@@ -8,7 +8,23 @@ export class UserService {
         return "get all users from user service";
     }
 
-    store(){
-        return 'req';
+
+    store(req){
+        return req.body;
     }
+
+
+    update(req,para){
+        return req;
+    }
+
+
+    show(param){
+        return param;
+    }
+
+    delete(param){
+        return param;
+    }
+
 }
