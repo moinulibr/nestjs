@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Req } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Req } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserCreateDto } from './dto/userCreateDto.dto';
 
@@ -35,15 +35,27 @@ export class UserController {
     }
 
 
+    //@Get('/:id')
+    //show(@Param() param : {id:number}){
+        //return this.userService.show(param);
+    //}
+
+    //pipe params validation
     @Get('/:id')
-    show(@Param() param : {id:number}){
-        return this.userService.show(param);
+    show(@Param('id',ParseIntPipe) id:number){
+        return this.userService.show(id);
     }
 
+
+    //@Delete('/:id')
+    //delete(@Param() param: {id:number}){
+        //return this.userService.delete(param);
+    //}
     @Delete('/:id')
-    delete(@Param() param: {id:number}){
-        return this.userService.delete(param);
+    delete(@Param('id',ParseIntPipe) id:number){
+        return this.userService.delete(id);
     }
+
 
     //@Patch('/:id')
     //update(@Req() req: Request, @Param() param:{id:number}){
