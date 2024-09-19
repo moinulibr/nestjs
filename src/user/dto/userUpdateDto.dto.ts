@@ -1,7 +1,6 @@
 import { IsBoolean, IsEmail, IsMobilePhone, IsString, IsStrongPassword } from "class-validator";
 
-export class UserCreateDto{
-
+export class UserUpdateDto{
     @IsString()
     name:string;
 
@@ -10,12 +9,10 @@ export class UserCreateDto{
 
     @IsString() 
     password:string
-
     
     @IsString() 
     phone:string
 
     @IsBoolean()
     isActive : boolean
-
 }

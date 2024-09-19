@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from './entity/userEntity';
 import { Repository } from 'typeorm';
 import { User } from './entity/user';
+import { UserUpdateDto } from './dto/userUpdateDto.dto';
 
 @Injectable()
 export class UserService {
@@ -28,24 +29,27 @@ export class UserService {
         //return {body:userCreateDto};
     //}
     store(userCreateDto:UserCreateDto){
-        return {body:userCreateDto};
+        return this.userRepository.save(userCreateDto);
+        //return {body:userCreateDto};
     }
 
 
     //update(req,para){
         //return req;
     //}
-    update(body:any,para){
-        return body;
+    update(userUpdateDot:UserUpdateDto,id:number){
+        return this.userRepository.update(id,userUpdateDot);
     }
 
 
-    show(param){
-        return param;
+    // show(param:number){
+    show(id:number){
+        //return this.userRepository.findOne({where:{id:param}});
+        return this.userRepository.findOne({where:{id}});
     }
 
-    delete(param){
-        return param;
+    delete(param:number){
+        return this.userRepository.delete(param);
     }
 
 }
